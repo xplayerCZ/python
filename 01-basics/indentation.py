@@ -50,3 +50,19 @@ aspoň jednu podmínku if a funkci print(). Dodržte správné odsazování kód
 Do konzole vypište nejprve docstring vaší funkce a potom zavolejte funkci samotnou.   
 """
 
+def printMultiples(baseNumber, topRange):
+    """
+    This function prints multiples of the baseNumber
+    passed in as a parameter
+    in range from 0 to topRange
+    passed in as a parameter
+    """
+    for i in range(baseNumber, topRange + 1):
+        if i % 3 == 0:
+            print(i)
+
+
+print(printMultiples.__doc__)
+printMultiples(3, 100)
+
+
