@@ -15,8 +15,6 @@ def get_operand(index):
         return "-"
     if index == 2:
         return "*"
-    if index == 3:
-        return "-"
     return " "
 
 
@@ -38,7 +36,7 @@ def generate_equation(difficulty_level):
             second_number = randint(0, 99)
 
     if difficulty_level == 3 or difficulty_level == 4:
-        operand = randint(0, 3)
+        operand = randint(0, 2)
         if difficulty_level == 3:
             if operand > 1:
                 first_number = randint(0, 9)
@@ -78,7 +76,7 @@ print(
 )
 print("Vítejte v generátoru příkladů!")
 numberOfEquations = int(input("Zvolte prosím počet zadání. "))
-difficulty = int(input("Zvolte obtížnost. Obtížnost 1 a 2 obsahují pouze + a -. Obtížnosti 3 a 4 obsahují také * a /. "))
+difficulty = int(input("Zvolte obtížnost 1 až 4. Obtížnost 1 a 2 obsahují pouze + a -. Obtížnosti 3 a 4 obsahují také *. "))
 
 calculableEquations = generate_equations(numberOfEquations, difficulty)
 show_equations(calculableEquations)
