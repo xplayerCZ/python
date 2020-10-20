@@ -158,3 +158,75 @@ funkční kód, tím lepší).
 3. Vytvořte funkci, která vygeneruje náhodná hesla pro počet osob zadaný v parametru tak, aby heslo začínalo
    3 velkými písmeny, pokračovalo 3 malými písmeny, jedním speciálním znakem (-/+*) a končilo 3 náhodnými číslicemi.
 '''
+from unidecode import unidecode
+import string
+import random
+
+
+def createPythonIdentifier(original):
+    original = unidecode(original).lower()
+    pieces = original.split(" ")
+    return "-".join(pieces)
+
+
+def createNormalIdentifier(original):
+    pieces = unidecode(original).split(" ")
+    result = pieces[0]
+    for i in range(1, len(pieces)):
+        result += pieces[i].title()
+    return result
+
+
+def generateUpperCharacters(amount):
+    result = []
+    for i in range(0, amount):
+        result.append(random.choice(string.ascii_uppercase))
+    return result
+
+
+def generateLowerCharacters(amount):
+    result = []
+    for i in range(0, amount):
+        result.append(random.choice(string.ascii_lowercase))
+    return result
+
+
+def generateSpecialCharacters(amount):
+    specialCharacters = "+-/*"
+    result = []
+    for i in range(0, amount):
+        result.append(random.choice(specialCharacters))
+    return result
+
+
+def generateNumbers(amount):
+    result = []
+    for i in range(0, amount):
+        result.append(str(random.randint(0, 9)))
+    return result
+
+
+def generatePasswords(amount):
+    passwords = []
+    for i in range(0, amount):
+        characters = []
+        characters.extend(generateUpperCharacters(3))
+        characters.extend(generateLowerCharacters(3))
+        characters.extend(generateSpecialCharacters(3))
+        characters.extend(generateNumbers(3))
+        passwords.append("".join(characters))
+    return passwords
+
+
+origin = "12. 10. 2020"
+dateParts = origin.split(". ")
+myFormat = f"{dateParts[2]}-{dateParts[1]}-{dateParts[0]}"
+print(myFormat)
+print(createPythonIdentifier("To je proměnná v Pythonu"))
+print(createNormalIdentifier("To je proměnná v Pythonu"))
+print(generatePasswords(3))
+
+
+
+
+
