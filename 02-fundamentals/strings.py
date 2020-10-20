@@ -166,27 +166,27 @@ import random
 def createPythonIdentifier(original):
     original = unidecode(original).lower()
     pieces = original.split(" ")
-    return "-".join(pieces)
+    return "_".join(pieces)
 
 
 def createNormalIdentifier(original):
     pieces = unidecode(original).split(" ")
-    result = pieces[0]
+    result = pieces[0].lower()
     for i in range(1, len(pieces)):
         result += pieces[i].title()
     return result
 
 
-def generateUpperCharacters(amount):
+def generateUppercaseCharacters(amount):
     result = []
-    for i in range(0, amount):
+    for i in range(amount):
         result.append(random.choice(string.ascii_uppercase))
     return result
 
 
-def generateLowerCharacters(amount):
+def generateLowercaseCharacters(amount):
     result = []
-    for i in range(0, amount):
+    for i in range(amount):
         result.append(random.choice(string.ascii_lowercase))
     return result
 
@@ -194,24 +194,24 @@ def generateLowerCharacters(amount):
 def generateSpecialCharacters(amount):
     specialCharacters = "+-/*"
     result = []
-    for i in range(0, amount):
+    for i in range(amount):
         result.append(random.choice(specialCharacters))
     return result
 
 
 def generateNumbers(amount):
     result = []
-    for i in range(0, amount):
+    for i in range(amount):
         result.append(str(random.randint(0, 9)))
     return result
 
 
 def generatePasswords(amount):
     passwords = []
-    for i in range(0, amount):
+    for i in range(amount):
         characters = []
-        characters.extend(generateUpperCharacters(3))
-        characters.extend(generateLowerCharacters(3))
+        characters.extend(generateUppercaseCharacters(3))
+        characters.extend(generateLowercaseCharacters(3))
         characters.extend(generateSpecialCharacters(3))
         characters.extend(generateNumbers(3))
         passwords.append("".join(characters))
